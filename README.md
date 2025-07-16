@@ -15,8 +15,12 @@ we can find all here in dropdowns
 
 # Note
 1.Using getByRole component for implementing these queries also
-  a.getByRole
-  b.getLabelText
-  c.getByPlaceHolderText
-  d.getByText
-  e.getByDisplayValue
+  # getByRole
+  # getLabelText
+  # getByPlaceHolderText
+  # getByText
+  # getByDisplayValue
+  # getByAltText
+  # getByTitle
+  # getByTestId
+  

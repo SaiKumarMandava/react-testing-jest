@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Application } from "./Application";
 
 
-/*.....getByRole....*/
+/*....1.getByRole....*/
 /*
 1.getByrRole will return true whether the specific role is present or not.
 2.it will return true for one role.(test will pass)
@@ -25,7 +25,7 @@ getByRole("textbox",{
 */ 
 
 
-/*.....getByLabelText....*/
+/*....2.getByLabelText....*/
 /*
 -->getByLabelText will search all labels and finds the associate element with that label
 -->It uses id and htmlfor attributes to find element
@@ -37,7 +37,7 @@ getByRole("textbox",{
 -->selector will accept html elemnet as value here input is html element
 */
 
-/*.....getByPlaceHolderText....*/
+/*....3.getByPlaceHolderText....*/
 /*
 -->getByPlaceHolder will search all elements 
    with place holder attribute 
@@ -45,18 +45,33 @@ getByRole("textbox",{
 */
 
 
-/*.....getByText....*/
+/*....4.getByText....*/
 /*
 -->getByText search all the nodes with text content and 
    finds that element that matches given text.
 -->It also accept selctor options like getByLabelText
 */
 
-/*.....getByDisplayValue....*/
+/*....5.getByDisplayValue....*/
 /*
 -->it returns inpu,select or textarea that has matching 
    display value.
 
+*/
+
+/*....6.getByAltText....*/
+/*
+-->this will return the element that supports alt attribute.
+-->typically work for img,input,textarea supports alt.
+*/
+
+/*....7.getByTitle....*/
+/*-->it will return the element that matches the title attribute*/
+
+
+/*....8.getByTestId.....*/
+/*
+-->it will return the element that matches data-testid attribute
 */
 describe("Application",()=>{
     test("renders correctly",()=>{
@@ -95,6 +110,15 @@ describe("Application",()=>{
          
         const nameElements3 = screen.getByDisplayValue("Sai")
         expect(nameElements3).toBeInTheDocument()
+         
+        const imageelement = screen.getByAltText("a person with a laptop")
+        expect(imageelement).toBeInTheDocument()
+
+        const titleElement = screen.getByTitle("close")
+        expect(titleElement).toBeInTheDocument()
+        
+        const testId = screen.getByTestId("custom-element")
+        expect(testId).toBeInTheDocument()
 
         
        const nameBioTextArea=screen.getByRole('textbox',{
