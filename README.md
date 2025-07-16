@@ -12,3 +12,11 @@ we can find all here in dropdowns
 
 # to check avialable roles
 4.https://www.w3.org/TR/html-aria/#docconformance
+
+# Note
+1.Using getByRole component for implementing these queries also
+  a.getByRole
+  b.getLabelText
+  c.getByPlaceHolderText
+  d.getByText
+  e.getByDisplayValue

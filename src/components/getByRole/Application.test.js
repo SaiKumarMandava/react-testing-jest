@@ -25,6 +25,39 @@ getByRole("textbox",{
 */ 
 
 
+/*.....getByLabelText....*/
+/*
+-->getByLabelText will search all labels and finds the associate element with that label
+-->It uses id and htmlfor attributes to find element
+-->It also works when element is wrapped in label no need for htmlfor and id.
+-->If same label appeared two times it uses selector to run test cases.
+    like getByLabelText("label Name",{
+    selector:"input"
+    })
+-->selector will accept html elemnet as value here input is html element
+*/
+
+/*.....getByPlaceHolderText....*/
+/*
+-->getByPlaceHolder will search all elements 
+   with place holder attribute 
+   and finds that element that matches given text
+*/
+
+
+/*.....getByText....*/
+/*
+-->getByText search all the nodes with text content and 
+   finds that element that matches given text.
+-->It also accept selctor options like getByLabelText
+*/
+
+/*.....getByDisplayValue....*/
+/*
+-->it returns inpu,select or textarea that has matching 
+   display value.
+
+*/
 describe("Application",()=>{
     test("renders correctly",()=>{
         render(<Application/>);
@@ -52,8 +85,19 @@ describe("Application",()=>{
         })
         expect(nameElements).toBeInTheDocument()
 
+        const nameElements1 = screen.getByLabelText('Name',{
+            selector:"input"
+        })
+        expect(nameElements1).toBeInTheDocument()
+        
+        const nameElements2 = screen.getByPlaceholderText("Fullname")
+        expect(nameElements2).toBeInTheDocument()
+         
+        const nameElements3 = screen.getByDisplayValue("Sai")
+        expect(nameElements3).toBeInTheDocument()
 
-         const nameBioTextArea=screen.getByRole('textbox',{
+        
+       const nameBioTextArea=screen.getByRole('textbox',{
             name:"Bio"
         })
         expect(nameBioTextArea).toBeInTheDocument()
@@ -65,6 +109,16 @@ describe("Application",()=>{
         //checkbox
         const termsElement = screen.getByRole("checkbox")
         expect(termsElement).toBeInTheDocument()
+
+        const termsElement1 = screen.getByLabelText("I agree to the terms and conditions")
+        expect(termsElement1).toBeInTheDocument()
+
+
+        const paragraphText = screen.getByText("All fields are mandatory")
+        expect(paragraphText).toBeInTheDocument()
+
+         
+
 
         //button
         const buttonElement = screen.getByRole('button')
